@@ -157,7 +157,7 @@ export class PollensCard extends LitElement {
     const title = this.config.title || 'Pollen';
     const location = this.config.location || 'Bordeaux';
 
-    const gramine = this.getPollenData('graminé');
+    const gramine = this.getPollenData('gramine');
     const aulne = this.getPollenData('aulne');
     const bouleau = this.getPollenData('bouleau');
     const olivier = this.getPollenData('olivier');

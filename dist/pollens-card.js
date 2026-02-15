@@ -107,7 +107,7 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
           </div>
         </div>
       </div>
-    `}render(){if(!this.config||!this.hass)return q``;const t=this.config.title||"Pollen",e=this.config.location||"Bordeaux",s=this.getPollenData("graminé"),i=this.getPollenData("aulne"),o=this.getPollenData("bouleau"),r=this.getPollenData("olivier"),n=this.getPollenData("ambroisie"),a=this.getPollenData("armoise");return q`
+    `}render(){if(!this.config||!this.hass)return q``;const t=this.config.title||"Pollen",e=this.config.location||"Bordeaux",s=this.getPollenData("gramine"),i=this.getPollenData("aulne"),o=this.getPollenData("bouleau"),r=this.getPollenData("olivier"),n=this.getPollenData("ambroisie"),a=this.getPollenData("armoise");return q`
       <div class="pollens-card">
         <div class="dashboard-header">
           <ha-icon icon="mdi:flower-pollen" class="header-icon"></ha-icon>
