@@ -70,48 +70,47 @@ export class PollensCard extends LitElement {
     const colorTomorrow = this.getLevelColor(data.levelTomorrow);
     const percentToday = (data.levelToday / 4) * 100;
     const percentTomorrow = (data.levelTomorrow / 4) * 100;
-    const circumference = 2 * Math.PI * 35;
+    const circumference = 2 * Math.PI * 28;
     const offsetToday = circumference - (percentToday / 100) * circumference;
     const offsetTomorrow = circumference - (percentTomorrow / 100) * circumference;
 
     return html`
       <div class="pollen-item">
-        <div class="pollen-header">
+        <div class="pollen-left">
           <ha-icon icon="${icon}"></ha-icon>
-          <div class="pollen-info">
-            <span class="pollen-name">${name}</span>
-            <span class="pollen-level" style="color: ${colorToday}">${this.getLevelLabel(data.levelToday)}</span>
-          </div>
+          <span class="pollen-name">${name}</span>
         </div>
 
-        <div class="pollen-values">
+        <div class="pollen-right">
           <div class="pollen-day">
-            <svg class="pollen-ring" viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="35" fill="none" stroke="var(--divider-color, #e0e0e0)" stroke-width="6" opacity="0.3"/>
-              <circle cx="40" cy="40" r="35" fill="none" stroke="${colorToday}" stroke-width="6"
+            <svg class="pollen-ring" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="28" fill="none" stroke="var(--divider-color, #e0e0e0)" stroke-width="5" opacity="0.2"/>
+              <circle cx="32" cy="32" r="28" fill="none" stroke="${colorToday}" stroke-width="5"
                 stroke-dasharray="${circumference}" stroke-dashoffset="${offsetToday}"
-                stroke-linecap="round" transform="rotate(-90 40 40)" class="pollen-progress"/>
+                stroke-linecap="round" transform="rotate(-90 32 32)" class="pollen-progress"/>
             </svg>
             <div class="day-info">
               <div class="day-value">${data.concentrationToday}</div>
-              <div class="day-unit">μg/m³</div>
             </div>
           </div>
 
-          <ha-icon icon="mdi:arrow-right" class="arrow-icon"></ha-icon>
+          <ha-icon icon="mdi:chevron-right" class="arrow-icon"></ha-icon>
 
           <div class="pollen-day tomorrow">
-            <svg class="pollen-ring" viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="35" fill="none" stroke="var(--divider-color, #e0e0e0)" stroke-width="6" opacity="0.3"/>
-              <circle cx="40" cy="40" r="35" fill="none" stroke="${colorTomorrow}" stroke-width="6"
+            <svg class="pollen-ring" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="28" fill="none" stroke="var(--divider-color, #e0e0e0)" stroke-width="5" opacity="0.2"/>
+              <circle cx="32" cy="32" r="28" fill="none" stroke="${colorTomorrow}" stroke-width="5"
                 stroke-dasharray="${circumference}" stroke-dashoffset="${offsetTomorrow}"
-                stroke-linecap="round" transform="rotate(-90 40 40)" class="pollen-progress"/>
+                stroke-linecap="round" transform="rotate(-90 32 32)" class="pollen-progress"/>
             </svg>
             <div class="day-info">
               <div class="day-value">${data.concentrationTomorrow}</div>
-              <div class="day-unit">μg/m³</div>
             </div>
           </div>
+
+          <span class="pollen-level" style="background-color: ${colorToday}20; color: ${colorToday}">
+            ${this.getLevelLabel(data.levelToday)}
+          </span>
         </div>
       </div>
     `;
@@ -192,13 +191,13 @@ export class PollensCard extends LitElement {
         display: flex;
         align-items: center;
         gap: 12px;
-        margin-bottom: 16px;
-        padding-bottom: 12px;
-        border-bottom: 2px solid var(--primary-color);
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--primary-color);
       }
 
       .header-icon {
-        --mdi-icon-size: 32px;
+        --mdi-icon-size: 28px;
         color: var(--primary-color);
       }
 
@@ -207,7 +206,7 @@ export class PollensCard extends LitElement {
       }
 
       .title {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 500;
         margin: 0;
         letter-spacing: -0.5px;
@@ -215,7 +214,7 @@ export class PollensCard extends LitElement {
       }
 
       .location {
-        font-size: 13px;
+        font-size: 12px;
         color: var(--secondary-text-color);
         margin-top: 2px;
       }
@@ -223,63 +222,58 @@ export class PollensCard extends LitElement {
       .pollen-grid {
         display: flex;
         flex-direction: column;
-        gap: 8px;
-        margin-bottom: 12px;
+        gap: 6px;
+        margin-bottom: 10px;
       }
 
       .pollen-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         background: var(--secondary-background-color, #f5f5f5);
         border: 1px solid var(--divider-color, #e0e0e0);
-        border-radius: 12px;
-        padding: 12px 16px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 10px 14px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         transition: all 0.2s;
       }
 
       .pollen-item:hover {
         background: var(--primary-background-color, #fafafa);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transform: translateX(2px);
       }
 
-      .pollen-header {
+      .pollen-left {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 12px;
+        flex: 1;
       }
 
-      .pollen-header ha-icon {
-        --mdi-icon-size: 24px;
+      .pollen-left ha-icon {
+        --mdi-icon-size: 22px;
         color: var(--secondary-text-color);
       }
 
-      .pollen-info {
-        flex: 1;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
       .pollen-name {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 500;
         color: var(--primary-text-color);
       }
 
-      .pollen-level {
-        font-size: 12px;
-        font-weight: 600;
-        padding: 4px 10px;
-        border-radius: 12px;
-        background: var(--divider-color, #e0e0e0);
-      }
-
-      .pollen-values {
+      .pollen-right {
         display: flex;
         align-items: center;
-        justify-content: space-around;
         gap: 8px;
+      }
+
+      .pollen-level {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 10px;
+        white-space: nowrap;
       }
 
       .pollen-day {
@@ -290,12 +284,12 @@ export class PollensCard extends LitElement {
       }
 
       .pollen-day.tomorrow {
-        opacity: 0.6;
+        opacity: 0.5;
       }
 
       .pollen-ring {
-        width: 70px;
-        height: 70px;
+        width: 50px;
+        height: 50px;
       }
 
       .pollen-progress {
@@ -305,37 +299,30 @@ export class PollensCard extends LitElement {
       .day-info {
         position: absolute;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
       }
 
       .day-value {
-        font-size: 14px;
+        font-size: 11px;
         font-weight: 700;
         line-height: 1;
         color: var(--primary-text-color);
       }
 
-      .day-unit {
-        font-size: 8px;
-        color: var(--secondary-text-color);
-        margin-top: 2px;
-      }
-
       .arrow-icon {
-        --mdi-icon-size: 16px;
+        --mdi-icon-size: 14px;
         color: var(--secondary-text-color);
-        opacity: 0.5;
+        opacity: 0.4;
       }
 
       .legend {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 8px;
-        padding-top: 12px;
-        margin-top: 8px;
+        gap: 10px;
+        padding-top: 10px;
+        margin-top: 6px;
         border-top: 1px solid var(--divider-color, #e0e0e0);
       }
 
@@ -345,13 +332,15 @@ export class PollensCard extends LitElement {
         gap: 5px;
         font-size: 10px;
         color: var(--secondary-text-color);
+        padding: 2px 6px;
+        border-radius: 6px;
+        background: var(--secondary-background-color, #f5f5f5);
       }
 
       .legend-dot {
-        width: 8px;
-        height: 8px;
+        width: 6px;
+        height: 6px;
         border-radius: 50%;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
       }
 
       @media (max-width: 600px) {
@@ -359,19 +348,28 @@ export class PollensCard extends LitElement {
           padding: 16px;
         }
 
-        .pollen-grid {
-          grid-template-columns: 1fr;
-        }
-
         .title {
           font-size: 20px;
+        }
+
+        .pollen-level {
+          display: none;
+        }
+
+        .pollen-ring {
+          width: 45px;
+          height: 45px;
+        }
+
+        .day-value {
+          font-size: 10px;
         }
       }
     `;
   }
 
   getCardSize(): number {
-    return 5;
+    return 4;
   }
 }
 
@@ -385,7 +383,7 @@ export class PollensCard extends LitElement {
 });
 
 console.info(
-  `%c POLLENS-CARD %c v1.2.0 `,
+  `%c POLLENS-CARD %c v1.3.0 `,
   'color: white; background: #667eea; font-weight: 700;',
   'color: #667eea; background: white; font-weight: 700;'
 );

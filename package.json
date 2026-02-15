@@ -1,6 +1,6 @@
 {
   "name": "pollens-card",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Carte moderne de visualisation des niveaux de pollen pour Home Assistant",
   "main": "dist/pollens-card.js",
   "scripts": {
