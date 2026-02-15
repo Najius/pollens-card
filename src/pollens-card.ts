@@ -392,7 +392,7 @@ export class PollensCard extends LitElement {
 });
 
 console.info(
-  `%c POLLENS-CARD %c v1.0.0 `,
+  `%c POLLENS-CARD %c v1.0.1 `,
   'color: white; background: #667eea; font-weight: 700;',
   'color: #667eea; background: white; font-weight: 700;'
 );
