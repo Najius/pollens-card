@@ -87,7 +87,7 @@ export class PollensCard extends LitElement {
         <div class="pollen-values">
           <div class="pollen-day">
             <svg class="pollen-ring" viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="35" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="6"/>
+              <circle cx="40" cy="40" r="35" fill="none" stroke="var(--divider-color, #e0e0e0)" stroke-width="6" opacity="0.3"/>
               <circle cx="40" cy="40" r="35" fill="none" stroke="${colorToday}" stroke-width="6"
                 stroke-dasharray="${circumference}" stroke-dashoffset="${offsetToday}"
                 stroke-linecap="round" transform="rotate(-90 40 40)" class="pollen-progress"/>
@@ -102,7 +102,7 @@ export class PollensCard extends LitElement {
 
           <div class="pollen-day tomorrow">
             <svg class="pollen-ring" viewBox="0 0 80 80">
-              <circle cx="40" cy="40" r="35" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="6"/>
+              <circle cx="40" cy="40" r="35" fill="none" stroke="var(--divider-color, #e0e0e0)" stroke-width="6" opacity="0.3"/>
               <circle cx="40" cy="40" r="35" fill="none" stroke="${colorTomorrow}" stroke-width="6"
                 stroke-dasharray="${circumference}" stroke-dashoffset="${offsetTomorrow}"
                 stroke-linecap="round" transform="rotate(-90 40 40)" class="pollen-progress"/>
@@ -180,11 +180,12 @@ export class PollensCard extends LitElement {
       }
 
       .pollens-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 16px;
+        background: var(--ha-card-background, var(--card-background-color, white));
+        border-radius: var(--ha-card-border-radius, 12px);
         padding: 20px;
-        color: white;
-        font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: var(--primary-text-color);
+        font-family: var(--ha-card-font-family, 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+        box-shadow: var(--ha-card-box-shadow, 0 2px 8px rgba(0, 0, 0, 0.1));
       }
 
       .dashboard-header {
@@ -192,11 +193,13 @@ export class PollensCard extends LitElement {
         align-items: center;
         gap: 12px;
         margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--primary-color);
       }
 
       .header-icon {
         --mdi-icon-size: 32px;
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--primary-color);
       }
 
       .header-text {
@@ -208,11 +211,12 @@ export class PollensCard extends LitElement {
         font-weight: 500;
         margin: 0;
         letter-spacing: -0.5px;
+        color: var(--primary-text-color);
       }
 
       .location {
         font-size: 13px;
-        opacity: 0.8;
+        color: var(--secondary-text-color);
         margin-top: 2px;
       }
 
@@ -224,18 +228,18 @@ export class PollensCard extends LitElement {
       }
 
       .pollen-item {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: var(--secondary-background-color, #f5f5f5);
+        border: 1px solid var(--divider-color, #e0e0e0);
         border-radius: 12px;
         padding: 12px 16px;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         transition: all 0.2s;
       }
 
       .pollen-item:hover {
-        background: rgba(255, 255, 255, 0.15);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        background: var(--primary-background-color, #fafafa);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transform: translateY(-1px);
       }
 
       .pollen-header {
@@ -247,7 +251,7 @@ export class PollensCard extends LitElement {
 
       .pollen-header ha-icon {
         --mdi-icon-size: 24px;
-        color: rgba(255, 255, 255, 0.9);
+        color: var(--secondary-text-color);
       }
 
       .pollen-info {
@@ -260,6 +264,7 @@ export class PollensCard extends LitElement {
       .pollen-name {
         font-size: 16px;
         font-weight: 500;
+        color: var(--primary-text-color);
       }
 
       .pollen-level {
@@ -267,7 +272,7 @@ export class PollensCard extends LitElement {
         font-weight: 600;
         padding: 4px 10px;
         border-radius: 12px;
-        background: rgba(0, 0, 0, 0.2);
+        background: var(--divider-color, #e0e0e0);
       }
 
       .pollen-values {
@@ -285,7 +290,7 @@ export class PollensCard extends LitElement {
       }
 
       .pollen-day.tomorrow {
-        opacity: 0.7;
+        opacity: 0.6;
       }
 
       .pollen-ring {
@@ -309,16 +314,18 @@ export class PollensCard extends LitElement {
         font-size: 14px;
         font-weight: 700;
         line-height: 1;
+        color: var(--primary-text-color);
       }
 
       .day-unit {
         font-size: 8px;
-        opacity: 0.8;
+        color: var(--secondary-text-color);
         margin-top: 2px;
       }
 
       .arrow-icon {
         --mdi-icon-size: 16px;
+        color: var(--secondary-text-color);
         opacity: 0.5;
       }
 
@@ -327,8 +334,9 @@ export class PollensCard extends LitElement {
         justify-content: center;
         flex-wrap: wrap;
         gap: 8px;
-        padding-top: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 12px;
+        margin-top: 8px;
+        border-top: 1px solid var(--divider-color, #e0e0e0);
       }
 
       .legend-item {
@@ -336,13 +344,14 @@ export class PollensCard extends LitElement {
         align-items: center;
         gap: 5px;
         font-size: 10px;
-        opacity: 0.8;
+        color: var(--secondary-text-color);
       }
 
       .legend-dot {
         width: 8px;
         height: 8px;
         border-radius: 50%;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
       }
 
       @media (max-width: 600px) {
@@ -376,7 +385,7 @@ export class PollensCard extends LitElement {
 });
 
 console.info(
-  `%c POLLENS-CARD %c v1.1.0 `,
+  `%c POLLENS-CARD %c v1.2.0 `,
   'color: white; background: #667eea; font-weight: 700;',
   'color: #667eea; background: white; font-weight: 700;'
 );
