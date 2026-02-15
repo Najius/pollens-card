@@ -68,10 +68,9 @@ export class PollensCard extends LitElement {
   ) {
     const colorToday = this.getLevelColor(data.levelToday);
     const colorTomorrow = this.getLevelColor(data.levelTomorrow);
-    const labelToday = this.getLevelLabel(data.levelToday);
     const percentToday = (data.levelToday / 4) * 100;
     const percentTomorrow = (data.levelTomorrow / 4) * 100;
-    const circumference = 2 * Math.PI * 40;
+    const circumference = 2 * Math.PI * 35;
     const offsetToday = circumference - (percentToday / 100) * circumference;
     const offsetTomorrow = circumference - (percentTomorrow / 100) * circumference;
 
@@ -79,70 +78,39 @@ export class PollensCard extends LitElement {
       <div class="pollen-item">
         <div class="pollen-header">
           <ha-icon icon="${icon}"></ha-icon>
-          <span class="pollen-name">${name}</span>
+          <div class="pollen-info">
+            <span class="pollen-name">${name}</span>
+            <span class="pollen-level" style="color: ${colorToday}">${this.getLevelLabel(data.levelToday)}</span>
+          </div>
         </div>
 
-        <div class="pollen-comparison">
-          <!-- Today -->
+        <div class="pollen-values">
           <div class="pollen-day">
-            <div class="day-label">Aujourd'hui</div>
-            <svg class="pollen-ring" viewBox="0 0 100 100">
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.1)"
-                stroke-width="8"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="${colorToday}"
-                stroke-width="8"
-                stroke-dasharray="${circumference}"
-                stroke-dashoffset="${offsetToday}"
-                stroke-linecap="round"
-                transform="rotate(-90 50 50)"
-                class="pollen-progress"
-              />
-              <text x="50" y="50" text-anchor="middle" dy=".3em" class="level-text">${data.levelToday}/4</text>
+            <svg class="pollen-ring" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="35" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="6"/>
+              <circle cx="40" cy="40" r="35" fill="none" stroke="${colorToday}" stroke-width="6"
+                stroke-dasharray="${circumference}" stroke-dashoffset="${offsetToday}"
+                stroke-linecap="round" transform="rotate(-90 40 40)" class="pollen-progress"/>
             </svg>
-            <div class="concentration">${data.concentrationToday} μg/m³</div>
-            <div class="level-label" style="color: ${colorToday}">${labelToday}</div>
+            <div class="day-info">
+              <div class="day-value">${data.concentrationToday}</div>
+              <div class="day-unit">μg/m³</div>
+            </div>
           </div>
 
-          <!-- Tomorrow -->
-          <div class="pollen-day">
-            <div class="day-label">Demain</div>
-            <svg class="pollen-ring" viewBox="0 0 100 100">
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="rgba(255, 255, 255, 0.1)"
-                stroke-width="8"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="${colorTomorrow}"
-                stroke-width="8"
-                stroke-dasharray="${circumference}"
-                stroke-dashoffset="${offsetTomorrow}"
-                stroke-linecap="round"
-                transform="rotate(-90 50 50)"
-                class="pollen-progress"
-              />
-              <text x="50" y="50" text-anchor="middle" dy=".3em" class="level-text">${data.levelTomorrow}/4</text>
+          <ha-icon icon="mdi:arrow-right" class="arrow-icon"></ha-icon>
+
+          <div class="pollen-day tomorrow">
+            <svg class="pollen-ring" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="35" fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="6"/>
+              <circle cx="40" cy="40" r="35" fill="none" stroke="${colorTomorrow}" stroke-width="6"
+                stroke-dasharray="${circumference}" stroke-dashoffset="${offsetTomorrow}"
+                stroke-linecap="round" transform="rotate(-90 40 40)" class="pollen-progress"/>
             </svg>
-            <div class="concentration">${data.concentrationTomorrow} μg/m³</div>
-            <div class="level-label" style="color: ${colorTomorrow}">${this.getLevelLabel(data.levelTomorrow)}</div>
+            <div class="day-info">
+              <div class="day-value">${data.concentrationTomorrow}</div>
+              <div class="day-unit">μg/m³</div>
+            </div>
           </div>
         </div>
       </div>
@@ -249,116 +217,132 @@ export class PollensCard extends LitElement {
       }
 
       .pollen-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 10px;
-        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 12px;
       }
 
       .pollen-item {
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 12px;
-        padding: 12px;
+        padding: 12px 16px;
         backdrop-filter: blur(20px);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s;
       }
 
       .pollen-item:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
 
       .pollen-header {
         display: flex;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 10px;
+        gap: 10px;
+        margin-bottom: 12px;
       }
 
       .pollen-header ha-icon {
-        --mdi-icon-size: 20px;
+        --mdi-icon-size: 24px;
         color: rgba(255, 255, 255, 0.9);
       }
 
+      .pollen-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
       .pollen-name {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 500;
       }
 
-      .pollen-comparison {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+      .pollen-level {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 12px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .pollen-values {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         gap: 8px;
       }
 
       .pollen-day {
+        position: relative;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
       }
 
-      .day-label {
-        font-size: 10px;
-        font-weight: 500;
-        opacity: 0.8;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+      .pollen-day.tomorrow {
+        opacity: 0.7;
       }
 
       .pollen-ring {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
       }
 
       .pollen-progress {
         transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .level-text {
+      .day-info {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .day-value {
         font-size: 14px;
-        font-weight: 600;
-        fill: white;
+        font-weight: 700;
+        line-height: 1;
       }
 
-      .concentration {
-        font-size: 10px;
-        font-weight: 500;
-        opacity: 0.9;
+      .day-unit {
+        font-size: 8px;
+        opacity: 0.8;
+        margin-top: 2px;
       }
 
-      .level-label {
-        font-size: 9px;
-        font-weight: 600;
-        padding: 3px 8px;
-        border-radius: 8px;
-        background: rgba(0, 0, 0, 0.2);
+      .arrow-icon {
+        --mdi-icon-size: 16px;
+        opacity: 0.5;
       }
 
       .legend {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 12px;
-        padding-top: 12px;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        gap: 8px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
       }
 
       .legend-item {
         display: flex;
         align-items: center;
-        gap: 6px;
-        font-size: 11px;
-        opacity: 0.9;
+        gap: 5px;
+        font-size: 10px;
+        opacity: 0.8;
       }
 
       .legend-dot {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
-        box-shadow: 0 0 6px currentColor;
       }
 
       @media (max-width: 600px) {
@@ -378,7 +362,7 @@ export class PollensCard extends LitElement {
   }
 
   getCardSize(): number {
-    return 4;
+    return 5;
   }
 }
 
@@ -392,7 +376,7 @@ export class PollensCard extends LitElement {
 });
 
 console.info(
-  `%c POLLENS-CARD %c v1.0.2 `,
+  `%c POLLENS-CARD %c v1.1.0 `,
   'color: white; background: #667eea; font-weight: 700;',
   'color: #667eea; background: white; font-weight: 700;'
 );
