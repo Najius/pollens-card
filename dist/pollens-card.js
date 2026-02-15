@@ -152,8 +152,8 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
 
       .pollens-card {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 24px;
-        padding: 32px;
+        border-radius: 16px;
+        padding: 20px;
         color: white;
         font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       }
@@ -161,12 +161,12 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
       .dashboard-header {
         display: flex;
         align-items: center;
-        gap: 16px;
-        margin-bottom: 32px;
+        gap: 12px;
+        margin-bottom: 16px;
       }
 
       .header-icon {
-        --mdi-icon-size: 48px;
+        --mdi-icon-size: 32px;
         color: rgba(255, 255, 255, 0.9);
       }
 
@@ -175,72 +175,72 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
       }
 
       .title {
-        font-size: 36px;
+        font-size: 24px;
         font-weight: 500;
         margin: 0;
         letter-spacing: -0.5px;
       }
 
       .location {
-        font-size: 16px;
+        font-size: 13px;
         opacity: 0.8;
-        margin-top: 4px;
+        margin-top: 2px;
       }
 
       .pollen-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        margin-bottom: 24px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 10px;
+        margin-bottom: 16px;
       }
 
       .pollen-item {
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 24px;
+        border-radius: 12px;
+        padding: 12px;
         backdrop-filter: blur(20px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s, box-shadow 0.2s;
       }
 
       .pollen-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
       }
 
       .pollen-header {
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 20px;
+        gap: 8px;
+        margin-bottom: 10px;
       }
 
       .pollen-header ha-icon {
-        --mdi-icon-size: 28px;
+        --mdi-icon-size: 20px;
         color: rgba(255, 255, 255, 0.9);
       }
 
       .pollen-name {
-        font-size: 18px;
+        font-size: 14px;
         font-weight: 500;
       }
 
       .pollen-comparison {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 8px;
       }
 
       .pollen-day {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 6px;
       }
 
       .day-label {
-        font-size: 12px;
+        font-size: 10px;
         font-weight: 500;
         opacity: 0.8;
         text-transform: uppercase;
@@ -248,8 +248,8 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
       }
 
       .pollen-ring {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 60px;
       }
 
       .pollen-progress {
@@ -257,22 +257,22 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
       }
 
       .level-text {
-        font-size: 20px;
+        font-size: 14px;
         font-weight: 600;
         fill: white;
       }
 
       .concentration {
-        font-size: 13px;
+        font-size: 10px;
         font-weight: 500;
         opacity: 0.9;
       }
 
       .level-label {
-        font-size: 12px;
+        font-size: 9px;
         font-weight: 600;
-        padding: 4px 12px;
-        border-radius: 12px;
+        padding: 3px 8px;
+        border-radius: 8px;
         background: rgba(0, 0, 0, 0.2);
       }
 
@@ -280,29 +280,29 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 20px;
-        padding-top: 20px;
+        gap: 12px;
+        padding-top: 12px;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
       }
 
       .legend-item {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 13px;
+        gap: 6px;
+        font-size: 11px;
         opacity: 0.9;
       }
 
       .legend-dot {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
-        box-shadow: 0 0 8px currentColor;
+        box-shadow: 0 0 6px currentColor;
       }
 
       @media (max-width: 600px) {
         .pollens-card {
-          padding: 20px;
+          padding: 16px;
         }
 
         .pollen-grid {
@@ -310,7 +310,7 @@ const ht={attribute:!0,type:String,converter:_,reflect:!1,hasChanged:y},ct=(t=ht
         }
 
         .title {
-          font-size: 28px;
+          font-size: 20px;
         }
       }
-    `}getCardSize(){return 6}};t([dt({attribute:!1})],pt.prototype,"hass",void 0),t([function(t){return dt({...t,state:!0,attribute:!1})}()],pt.prototype,"config",void 0),pt=t([(t=>(e,s)=>{void 0!==s?s.addInitializer(()=>{customElements.define(t,e)}):customElements.define(t,e)})("pollens-card")],pt),window.customCards=window.customCards||[],window.customCards.push({type:"pollens-card",name:"Pollens Card",description:"Carte moderne de visualisation des niveaux de pollen pour Home Assistant",preview:!0}),console.info("%c POLLENS-CARD %c v1.0.1 ","color: white; background: #667eea; font-weight: 700;","color: #667eea; background: white; font-weight: 700;");export{pt as PollensCard};
+    `}getCardSize(){return 4}};t([dt({attribute:!1})],pt.prototype,"hass",void 0),t([function(t){return dt({...t,state:!0,attribute:!1})}()],pt.prototype,"config",void 0),pt=t([(t=>(e,s)=>{void 0!==s?s.addInitializer(()=>{customElements.define(t,e)}):customElements.define(t,e)})("pollens-card")],pt),window.customCards=window.customCards||[],window.customCards.push({type:"pollens-card",name:"Pollens Card",description:"Carte moderne de visualisation des niveaux de pollen pour Home Assistant",preview:!0}),console.info("%c POLLENS-CARD %c v1.0.2 ","color: white; background: #667eea; font-weight: 700;","color: #667eea; background: white; font-weight: 700;");export{pt as PollensCard};
